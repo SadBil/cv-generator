@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Preview</title>
+    <style>
+        /* Add your CSS styles for the preview here */
+    </style>
+</head>
+<body>
+    <h1>My CV</h1>
+    <h2>Personal Information</h2>
+    <p>Name: <%= name %></p>
+    <p>Email: <%= email %></p>
+    <li>Phome : <%= phone %></li>
+    
+    <!-- Profile Picture -->
+    <h2>Profile Picture</h2>
+    <img src="<%= profilePicture.path %>" alt="Profile Picture" width="200">
+
+    
+    <!-- Education Section -->
+    <h2>Education</h2>
+    <ul>
+        <% educationData.forEach(function(education) { %>
+            <li>
+                <strong><%= education.institution %></strong>
+                <br>
+                <%= education.degree %>, <%= education.date %>
+            </li>
+        <% }); %>
+    </ul>
+
+    <!-- Experience Section -->
+    <h2>Experience</h2>
+    <ul>
+        <% experienceData.forEach(function(experience) { %>
+            <li>
+                <strong><%= experience.company %></strong>
+                <br>
+                <%= experience.title %>, <%= experience.dates %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

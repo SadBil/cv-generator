@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+        }
+        form select { 
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+        }
+        form input [type="file"] {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .education-entry,
+        .experience-entry {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .education-entry input,
+        .experience-entry input {
+            width: 30%;
+            padding: 8px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="button"] {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="button"]:hover,
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #openPdfLink {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>CV Generator</h1>
+    <form action="/generate" method="post" id="cvForm">
+          <label for="profilePicture">Profile Picture:</label>
+        <input type="file" name="profilePicture" accept="image/*" id="profilePictureInput">
+        <!-- Add an img element to display the profile picture -->
+        <img id="profilePicturePreview" src="" alt="Profile Picture" style="max-width: 250px; display: none;">
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone"><br>
+
+        <!-- Education Section -->
+        <h2>Education</h2>
+        <div id="educationContainer">
+            <div class="education-entry">
+                <input type="text" name="educationInstitution[]" placeholder="Institution Name">
+                <select name="educationDegree[]">
+                    <option value="" disabled selected>Select a degree</option>
+                    <option value="BT">BT (Brevet de Technicien)</option>
+                    <option value="BTS">BTS (Brevet de Technicien Supérieur)</option>
+                    <option value="BREVEET">BREVEET (Brevet d'Enseignement Elémentaire)</option>
+                    <option value="BACALUREAT">BACALUREAT (Baccalauréat)</option>
+                    <option value="DUT">DUT (Diplôme Universitaire de Technologie)</option>
+                    <option value="LICENCE">LICENCE (Bachelor's Degree)</option>
+                    <option value="MASTER">MASTER (Master's Degree)</option>
+                    <option value="DOCTORAT">DOCTORAT (Doctorate Degree)</option>   
+                </select>
+                <select name="educationDate[]" placeholder="Graduation Year">
+                    <option value="" disabled selected>Select a year</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" id="addEducation">Add Education</button><br>
+
+        <!-- Experience Section -->
+        <h2>Experience</h2>
+        <div id="experienceContainer">
+            <div class="experience-entry">
+                <input type="text" name="experienceCompany[]" placeholder="Company Name">
+                <input type="text" name="experienceTitle[]" placeholder="Job Title">
+                <input type="text" name="experienceDates[]" placeholder="Employment Dates">
+
+            </div>
+        </div>
+        <button type="button" id="addExperience">Add Experience</button><br>
+        <br>
+        <button type="submit">Generate CV</button>
+    </form>
+
+    <script>
+        document.getElementById('profilePictureInput').addEventListener('change', function() {
+            const profilePicturePreview = document.getElementById('profilePicturePreview');
+            const profilePictureInput = this;
+            if (profilePictureInput.files && profilePictureInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePicturePreview.src = e.target.result;
+                    profilePicturePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(profilePictureInput.files[0]);
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById('cvForm').addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the form submission
+
+                // Fetch and process the form data
+                const formData = new FormData(this);
+                fetch('/generate', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.blob()) // Expect binary data
+                .then(cvBlob => {
+                    // Create a Blob URL for the PDF
+                    const pdfURL = URL.createObjectURL(cvBlob);
+                    
+                    // Open the PDF in a new browser tab
+                    const openPdfLink = document.getElementById('openPdfLink');
+                    openPdfLink.href = pdfURL;
+                    openPdfLink.click();
+                });
+            });
+
+            // JavaScript to add and preview education and experience entries
+            document.getElementById('addEducation').addEventListener('click', function() {
+                const educationContainer = document.getElementById('educationContainer');
+                const newEducationEntry = document.querySelector('.education-entry').cloneNode(true);
+                educationContainer.appendChild(newEducationEntry);
+            });
+
+            document.getElementById('addExperience').addEventListener('click', function() {
+                const experienceContainer = document.getElementById('experienceContainer');
+                const newExperienceEntry = document.querySelector('.experience-entry').cloneNode(true);
+                experienceContainer.appendChild(newExperienceEntry);
+            });
+
+
+        });
+    </script>
+</body>
+</html>
