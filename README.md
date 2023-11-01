@@ -40,20 +40,20 @@ npm start
 The application will be accessible at http://localhost:8080.
 
 
-**### USAGE**
-Access the application in your web browser.
+### usage
+**Access the application in your web browser.
 Fill out the CV details, including your name, email, phone, education, and experience.
 Upload a profile picture.
 Click the "Generate CV" button to create your CV in PDF format.
 Download and save the generated PDF CV.
 
-**### Features**
+### Features
 Easy-to-use web interface for creating CVs.
 Supports adding multiple education and experience entries.
 Allows users to preview the CV before generating the PDF.
 Profile picture upload and preview feature.
 
-**### Contributing**
+### Contributing
 We welcome contributions from the community. If you'd like to contribute to this project, please follow these steps:
 
 Fork the project.
@@ -62,7 +62,7 @@ Commit your changes: git commit -m 'Add some feature'
 Push to the branch: git push origin feature/your-feature
 Open a pull request.
 
-**### License**
+### License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 
