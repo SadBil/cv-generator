@@ -1,6 +1,4 @@
 # cv-generator
-# CV Generator
-
 CV Generator is a web application that allows users to create and generate their CVs in PDF format. It provides a simple and intuitive interface for entering personal and educational information, and it generates a PDF CV based on the provided data.
 
 ## Table of Contents
@@ -14,11 +12,6 @@ CV Generator is a web application that allows users to create and generate their
 - [License](#license)
 
 ## Getting Started
-
-
-### Prerequisites
-
-### Prerequisites
 ### Prerequisites
 
 - Node.js: Make sure you have Node.js installed on your computer. You can download it from [https://nodejs.org/](https://nodejs.org/).
