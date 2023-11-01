@@ -22,13 +22,13 @@ CV Generator is a web application that allows users to create and generate their
 Clone the repository:
 bash
 git clone https://github.com/yourusername/cv-generator.git
-Change into the project directory:
+2. Change into the project directory:
 cd cv-generator
-Install the required dependencies:
+3. Install the required dependencies:
 npm install
 
-Start the application:
-npm start
+4. Start the application:
+nodejs app.js
 
 The application will be accessible at http://localhost:8080.
 
