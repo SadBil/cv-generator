@@ -21,7 +21,7 @@ CV Generator is a web application that allows users to create and generate their
 1. clone th repository 
 Clone the repository:
 bash
-git clone https://github.com/yourusername/cv-generator.git
+git clone (https://github.com/SadBil/cv-generator/cv-generator.git)
 2. Change into the project directory:
 cd cv-generator
 3. Install the required dependencies:
