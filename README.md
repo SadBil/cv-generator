@@ -15,15 +15,19 @@ CV Generator is a web application that allows users to create and generate their
 
 ## Getting Started
 
+
+### Prerequisites
+
+### Prerequisites
 ### Prerequisites
 
 - Node.js: Make sure you have Node.js installed on your computer. You can download it from [https://nodejs.org/](https://nodejs.org/).
 
+
 ### Installing
-
-1. Clone the repository:
-
-```bash
+1. clone th repository 
+Clone the repository:
+bash
 git clone https://github.com/yourusername/cv-generator.git
 Change into the project directory:
 cd cv-generator
@@ -34,6 +38,7 @@ Start the application:
 npm start
 
 The application will be accessible at http://localhost:8080.
+
 
 **### USAGE**
 Access the application in your web browser.
@@ -59,3 +64,5 @@ Open a pull request.
 
 **### License**
 This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+
